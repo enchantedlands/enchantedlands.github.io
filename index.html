@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft Server</title>
     <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('Minecraft.ttf') format('truetype');
+        }
         body {
             background-color: #121212;
             color: #FFFFFF;
@@ -40,6 +44,24 @@
             font-size: 1.2em;
             line-height: 1.5;
         }
+        .server-ip {
+            font-family: 'Minecraft', Arial, sans-serif;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .copy-button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: none;
+            color: #FFFFFF;
+            background-color: #00BCD4;
+            border-radius: 5px;
+        }
+        .copy-button:hover {
+            background-color: #0097A7;
+        }
     </style>
 </head>
 <body>
@@ -49,6 +71,21 @@
     </header>
     <div class="content">
         <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world.</p>
+        <div class="server-ip">
+            IP server > enchantedLands.aternos.me <
+            <button class="copy-button" onclick="copyToClipboard()">Copy to clipboard</button>
+        </div>
     </div>
+
+    <script>
+        function copyToClipboard() {
+            const ipText = 'enchantedLands.aternos.me';
+            navigator.clipboard.writeText(ipText).then(() => {
+                alert('IP copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
