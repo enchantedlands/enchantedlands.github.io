@@ -51,14 +51,17 @@
       align-items: center;
       justify-content: space-between;
       font-family: 'Minecraft', Arial, sans-serif;
-      font-size: 1.5em;
+      font-size: 1.3em;
       margin-top: 20px;
       word-break: break-word;
     }
+    .server-line span {
+      font-size: 1em; /* Más pequeño el texto de IP */
+    }
     .copy-button {
+      width: 210px; /* Tamaño fijo para que ambos botones sean iguales */
       font-size: 1em;
-      padding: 10px 20px;
-      margin-left: 10px;
+      padding: 10px 0;
       cursor: pointer;
       border: none;
       color: #FFFFFF;
@@ -88,8 +91,8 @@
         align-items: flex-start;
       }
       .copy-button {
+        width: 100%;
         margin-top: 10px;
-        margin-left: 0;
       }
       .commands h2 {
         font-size: 1.5em;
