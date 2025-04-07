@@ -86,7 +86,7 @@
     }
 
     .server-text {
-      background-color: #3A3A3A;
+      background-color: #4a4a4a;
       padding: 10px 15px;
       border-radius: 8px;
       font-size: 1em;
@@ -142,6 +142,9 @@
   </style>
 </head>
 <body>
+  <!-- Sonido de bienvenida -->
+  <audio id="welcome-sound" src="images/minecraft-effect-xp_102bpm_A#_minor.wav" preload="auto"></audio>
+
   <header class="fade-in fade-in-1">
     <img src="images/minecraftlogo.png" alt="Minecraft Logo" />
     <h1>Minecraft Server</h1>
@@ -190,6 +193,14 @@
         console.error('Could not copy text: ', err);
       });
     }
+
+    // Reproducir sonido al cargar
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('welcome-sound');
+      audio.play().catch(() => {
+        document.body.addEventListener('click', () => audio.play(), { once: true });
+      });
+    });
   </script>
 </body>
 </html>
