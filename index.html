@@ -46,6 +46,7 @@
       font-size: 1.2em;
       line-height: 1.5;
     }
+
     .server-line {
       display: flex;
       align-items: center;
@@ -55,11 +56,15 @@
       margin-top: 20px;
       word-break: break-word;
     }
-    .server-line span {
-      font-size: 1em; /* Más pequeño el texto de IP */
+    .server-text {
+      background-color: #2C2C2C; /* Fondo más claro */
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 1em; /* IP más pequeño */
     }
+
     .copy-button {
-      width: 210px; /* Tamaño fijo para que ambos botones sean iguales */
+      width: 210px;
       font-size: 1em;
       padding: 10px 0;
       cursor: pointer;
@@ -71,6 +76,7 @@
     .copy-button:hover {
       background-color: #0097A7;
     }
+
     .commands h2 {
       font-size: 2em;
       margin-bottom: 10px;
@@ -80,6 +86,7 @@
       font-size: 1em;
       line-height: 1.5;
     }
+
     @media (max-width: 768px) {
       header img {
         width: 90%;
@@ -105,16 +112,17 @@
     <img src="images/minecraftlogo.png" alt="Minecraft Logo" />
     <h1>Minecraft Server</h1>
   </header>
+
   <div class="content">
     <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world 🌏.</p>
     
     <div class="server-line">
-      <span>IP SERVER > enchantedLands_es.aternos.me <</span>
+      <span class="server-text">IP SERVER > enchantedLands_es.aternos.me <</span>
       <button class="copy-button" onclick="copyIP()">Copy to clipboard📋</button>
     </div>
 
     <div class="server-line">
-      <span>PORT server: 45716</span>
+      <span class="server-text">PORT server: 45716</span>
       <button class="copy-button" onclick="copyPort()">Copy to clipboard📋</button>
     </div>
   </div>
