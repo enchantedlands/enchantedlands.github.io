@@ -9,6 +9,29 @@
       font-family: 'Minecraft';
       src: url('Minecraft.ttf') format('truetype');
     }
+
+    /* Animación tipo dominó */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .fade-in-1 { animation-delay: 0.2s; }
+    .fade-in-2 { animation-delay: 0.4s; }
+    .fade-in-3 { animation-delay: 0.6s; }
+    .fade-in-4 { animation-delay: 0.8s; }
+    .fade-in-5 { animation-delay: 1s; }
+
     body {
       background-color: #121212;
       color: #FFFFFF;
@@ -21,17 +44,21 @@
       min-height: 100vh;
       text-align: center;
     }
+
     header {
       margin-bottom: 20px;
     }
+
     header img {
       width: 80%;
       max-width: 600px;
       height: auto;
     }
+
     h1 {
       display: none;
     }
+
     .content, .commands {
       max-width: 800px;
       width: 90%;
@@ -42,6 +69,7 @@
       margin-bottom: 20px;
       text-align: left;
     }
+
     .content p {
       font-size: 1.2em;
       line-height: 1.5;
@@ -56,8 +84,9 @@
       margin-top: 20px;
       word-break: break-word;
     }
+
     .server-text {
-      background-color: #3A3A3A; /* Fondo aún más claro */
+      background-color: #3A3A3A;
       padding: 10px 15px;
       border-radius: 8px;
       font-size: 1em;
@@ -73,6 +102,7 @@
       background-color: #00BCD4;
       border-radius: 5px;
     }
+
     .copy-button:hover {
       background-color: #0097A7;
     }
@@ -82,6 +112,7 @@
       margin-bottom: 10px;
       text-align: center;
     }
+
     .commands p {
       font-size: 1em;
       line-height: 1.5;
@@ -92,15 +123,18 @@
         width: 90%;
         max-width: 400px;
       }
+
       .server-line {
         font-size: 1.2em;
         flex-direction: column;
         align-items: flex-start;
       }
+
       .copy-button {
         width: 100%;
         margin-top: 10px;
       }
+
       .commands h2 {
         font-size: 1.5em;
       }
@@ -108,26 +142,26 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="fade-in fade-in-1">
     <img src="images/minecraftlogo.png" alt="Minecraft Logo" />
     <h1>Minecraft Server</h1>
   </header>
 
-  <div class="content">
+  <div class="content fade-in fade-in-2">
     <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world 🌏.</p>
-    
-    <div class="server-line">
+
+    <div class="server-line fade-in fade-in-3">
       <span class="server-text">IP SERVER > enchantedLands_es.aternos.me <</span>
       <button class="copy-button" onclick="copyIP()">Copy to clipboard📋</button>
     </div>
 
-    <div class="server-line">
+    <div class="server-line fade-in fade-in-4">
       <span class="server-text">PORT server: 45716</span>
       <button class="copy-button" onclick="copyPort()">Copy to clipboard📋</button>
     </div>
   </div>
 
-  <div class="commands">
+  <div class="commands fade-in fade-in-5">
     <h2>Commands you will use</h2>
     <p>/lobby - Teleport to spawn</p>
     <p>/back - teleport to your death chest</p>
