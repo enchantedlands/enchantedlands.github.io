@@ -46,7 +46,7 @@
             font-size: 1.2em;
             line-height: 1.5;
         }
-        .server-ip {
+        .server-ip, .server-port {
             font-family: 'Minecraft', Arial, sans-serif;
             font-size: 1.5em;
             margin-top: 20px;
@@ -79,7 +79,7 @@
                 width: 90%;
                 max-width: 400px;
             }
-            .server-ip {
+            .server-ip, .server-port {
                 font-size: 1.2em;
             }
             .commands h2 {
@@ -97,7 +97,11 @@
         <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world 🌏.</p>
         <div class="server-ip">
             IP SERVER > enchantedLands_es.aternos.me <
-            <button class="copy-button" onclick="copyToClipboard()">Copy to clipboard📋</button>
+            <button class="copy-button" onclick="copyIP()">Copy to clipboard📋</button>
+        </div>
+        <div class="server-port">
+            PORT server: 45716
+            <button class="copy-button" onclick="copyPort()">Copy to clipboard📋</button>
         </div>
     </div>
     <div class="commands">
@@ -112,10 +116,19 @@
     </div>
 
     <script>
-        function copyToClipboard() {
+        function copyIP() {
             const ipText = 'enchantedLands_es.aternos.me';
             navigator.clipboard.writeText(ipText).then(() => {
-                alert('copied to clipboard! have a good experience ♥');
+                alert('IP copied to clipboard! Have a good experience ♥');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function copyPort() {
+            const portText = '45716';
+            navigator.clipboard.writeText(portText).then(() => {
+                alert('Port copied to clipboard! Have a good experience ♥');
             }).catch(err => {
                 console.error('Could not copy text: ', err);
             });
