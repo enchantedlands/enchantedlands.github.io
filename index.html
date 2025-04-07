@@ -1,138 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>enchanted Lands | Minecraft Server</title>
-    <style>
-        @font-face {
-            font-family: 'Minecraft';
-            src: url('Minecraft.ttf') format('truetype');
-        }
-        body {
-            background-color: #121212;
-            color: #FFFFFF;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        header {
-            margin-bottom: 20px;
-        }
-        header img {
-            width: 80%;
-            max-width: 600px;
-            height: auto;
-        }
-        h1 {
-            display: none;
-        }
-        .content, .commands {
-            max-width: 800px;
-            width: 90%;
-            padding: 30px;
-            background-color: #1E1E1E;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .content p {
-            font-size: 1.2em;
-            line-height: 1.5;
-        }
-        .server-ip, .server-port {
-            font-family: 'Minecraft', Arial, sans-serif;
-            font-size: 1.5em;
-            margin-top: 20px;
-            word-break: break-word;
-        }
-        .copy-button {
-            font-size: 1em;
-            padding: 10px 20px;
-            margin-left: 10px;
-            cursor: pointer;
-            border: none;
-            color: #FFFFFF;
-            background-color: #00BCD4;
-            border-radius: 5px;
-        }
-        .copy-button:hover {
-            background-color: #0097A7;
-        }
-        .commands h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .commands p {
-            font-size: 1em;
-            line-height: 1.5;
-        }
-        @media (max-width: 768px) {
-            header img {
-                width: 90%;
-                max-width: 400px;
-            }
-            .server-ip, .server-port {
-                font-size: 1.2em;
-            }
-            .commands h2 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>enchanted Lands | Minecraft Server</title>
+  <style>
+    @font-face {
+      font-family: 'Minecraft';
+      src: url('Minecraft.ttf') format('truetype');
+    }
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    header {
+      margin-bottom: 20px;
+    }
+    header img {
+      width: 80%;
+      max-width: 600px;
+      height: auto;
+    }
+    h1 {
+      display: none;
+    }
+    .content, .commands {
+      max-width: 800px;
+      width: 90%;
+      padding: 30px;
+      background-color: #1E1E1E;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .content p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+    .server-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Minecraft', Arial, sans-serif;
+      font-size: 1.5em;
+      margin-top: 20px;
+      word-break: break-word;
+    }
+    .copy-button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+      border: none;
+      color: #FFFFFF;
+      background-color: #00BCD4;
+      border-radius: 5px;
+    }
+    .copy-button:hover {
+      background-color: #0097A7;
+    }
+    .commands h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .commands p {
+      font-size: 1em;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      header img {
+        width: 90%;
+        max-width: 400px;
+      }
+      .server-line {
+        font-size: 1.2em;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .copy-button {
+        margin-top: 10px;
+        margin-left: 0;
+      }
+      .commands h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="images/minecraftlogo.png" alt="Minecraft Logo">
-        <h1>Minecraft Server</h1>
-    </header>
-    <div class="content">
-        <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world 🌏.</p>
-        <div class="server-ip">
-            IP SERVER > enchantedLands_es.aternos.me <
-            <button class="copy-button" onclick="copyIP()">Copy to clipboard📋</button>
-        </div>
-        <div class="server-port">
-            PORT server: 45716
-            <button class="copy-button" onclick="copyPort()">Copy to clipboard📋</button>
-        </div>
-    </div>
-    <div class="commands">
-        <h2>Commands you will use</h2>
-        <p>/lobby - Teleport to spawn</p>
-        <p>/back - teleport to your death chest</p>
-        <p>/rtp - Teleport randomly</p>
-        <p>/sethome - Add a home</p>
-        <p>/home (your home) - Teleport to your home</p>
-        <p>/tpa (player to tp) - Request to teleport to a player</p>
-        <p>/tpa accept - Accept to teleport to a player</p>
+  <header>
+    <img src="images/minecraftlogo.png" alt="Minecraft Logo" />
+    <h1>Minecraft Server</h1>
+  </header>
+  <div class="content">
+    <p>Welcome to our Minecraft server! Join and enjoy a unique experience with friends and players from all over the world 🌏.</p>
+    
+    <div class="server-line">
+      <span>IP SERVER > enchantedLands_es.aternos.me <</span>
+      <button class="copy-button" onclick="copyIP()">Copy to clipboard📋</button>
     </div>
 
-    <script>
-        function copyIP() {
-            const ipText = 'enchantedLands_es.aternos.me';
-            navigator.clipboard.writeText(ipText).then(() => {
-                alert('IP copied to clipboard! Have a good experience ♥');
-            }).catch(err => {
-                console.error('Could not copy text: ', err);
-            });
-        }
+    <div class="server-line">
+      <span>PORT server: 45716</span>
+      <button class="copy-button" onclick="copyPort()">Copy to clipboard📋</button>
+    </div>
+  </div>
 
-        function copyPort() {
-            const portText = '45716';
-            navigator.clipboard.writeText(portText).then(() => {
-                alert('Port copied to clipboard! Have a good experience ♥');
-            }).catch(err => {
-                console.error('Could not copy text: ', err);
-            });
-        }
-    </script>
+  <div class="commands">
+    <h2>Commands you will use</h2>
+    <p>/lobby - Teleport to spawn</p>
+    <p>/back - teleport to your death chest</p>
+    <p>/rtp - Teleport randomly</p>
+    <p>/sethome - Add a home</p>
+    <p>/home (your home) - Teleport to your home</p>
+    <p>/tpa (player to tp) - Request to teleport to a player</p>
+    <p>/tpa accept - Accept to teleport to a player</p>
+  </div>
+
+  <script>
+    function copyIP() {
+      const ipText = 'enchantedLands_es.aternos.me';
+      navigator.clipboard.writeText(ipText).then(() => {
+        alert('IP copied to clipboard! Have a good experience ♥');
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    }
+
+    function copyPort() {
+      const portText = '45716';
+      navigator.clipboard.writeText(portText).then(() => {
+        alert('Port copied to clipboard! Have a good experience ♥');
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    }
+  </script>
 </body>
 </html>
