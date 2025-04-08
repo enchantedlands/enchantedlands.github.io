@@ -238,29 +238,40 @@
       stars.push(star);
     }
 
-    // Movimiento con el mouse hacia las 8 direcciones
+    // Movimiento con el mouse hacia las 8 direcciones (movimiento continuo)
+    let mouseX = 0;
+    let mouseY = 0;
+
     document.addEventListener('mousemove', e => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
+      mouseX = e.clientX / window.innerWidth - 0.5;
+      mouseY = e.clientY / window.innerHeight - 0.5;
+    });
 
-      const directionX = x > 0 ? 1 : -1;
-      const directionY = y > 0 ? 1 : -1;
+    // Hacer que las estrellas se muevan de forma continua
+    function moveStars() {
+      const directionX = mouseX;
+      const directionY = mouseY;
 
-      // Mover las estrellas en las 8 direcciones
-      starContainer.style.transform = `translate3d(${directionX * 20}px, ${directionY * 20}px, 0)`;
-
-      // Reposicionar las estrellas fuera del área visible en las direcciones adecuadas
+      // Mover todas las estrellas en la dirección determinada por el ratón
       stars.forEach(star => {
         const starX = parseFloat(star.style.left);
         const starY = parseFloat(star.style.top);
 
+        // Desplazar la estrella en la dirección de la posición del ratón
+        star.style.left = `${starX + directionX * 0.5}%`;
+        star.style.top = `${starY + directionY * 0.5}%`;
+
+        // Reposicionar las estrellas fuera del área visible
         if (starX > 100 || starX < 0 || starY > 100 || starY < 0) {
-          // Reposicionar estrellas fuera del área visible
           star.style.left = `${Math.random() * 100}%`;
           star.style.top = `${Math.random() * 100}%`;
         }
       });
-    });
+
+      requestAnimationFrame(moveStars);
+    }
+
+    moveStars();
   </script>
 </body>
 </html>
