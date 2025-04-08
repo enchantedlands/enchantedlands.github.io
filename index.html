@@ -265,8 +265,8 @@
         let starY = parseFloat(star.style.top);
 
         // Desplazar la estrella en la dirección de la posición del ratón
-        star.style.left = `${starX + directionX * 0.5}%`;
-        star.style.top = `${starY + directionY * 0.5}%`;
+        star.style.left = `${starX + directionX * 0.1}%`;
+        star.style.top = `${starY + directionY * 0.1}%`;
 
         // Reposicionar las estrellas fuera del área visible, apareciendo desde el lado opuesto
         if (starX > 100) {
