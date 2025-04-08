@@ -13,7 +13,7 @@
     body {
       margin: 0;
       background-color: #121212;
-      overflow: auto; /* Cambié de hidden a auto */
+      overflow: auto; /* Cambié de hidden a auto para habilitar scrollbar */
       color: #fff;
       font-family: Arial, sans-serif;
     }
@@ -238,7 +238,7 @@
     document.addEventListener('mousemove', e => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-      starContainer.style.transform = `translate(${x * 20px}, ${y * 20px})`;
+      starContainer.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
     });
   </script>
 </body>
