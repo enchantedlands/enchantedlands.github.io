@@ -229,23 +229,25 @@
     const starContainer = document.getElementById('stars');
     const stars = [];
 
-    // Función para crear una nueva estrella
-    function createStar() {
+    // Función para crear una nueva estrella con profundidad (diferente tamaño y velocidad)
+    function createStar(depth) {
       const star = document.createElement('div');
       star.classList.add('star');
       star.style.top = `${Math.random() * 100}%`;
       star.style.left = `${Math.random() * 100}%`;
       star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      star.style.transform = `scale(${Math.random() * 0.6 + 0.5})`;  // Escala para dar más sensación de profundidad
+      star.dataset.depth = depth;  // Asignamos la profundidad (importante para el parallax)
       starContainer.appendChild(star);
       stars.push(star);
     }
 
-    // Crear muchas estrellas al principio
+    // Crear muchas estrellas al principio con diferentes profundidades
     for (let i = 0; i < 150; i++) {  // Aumentamos el número de estrellas
-      createStar();
+      createStar(Math.random());
     }
 
-    // Movimiento con el mouse hacia las 8 direcciones (movimiento continuo)
+    // Movimiento con el mouse hacia las 8 direcciones (parallax)
     let mouseX = 0;
     let mouseY = 0;
 
@@ -254,19 +256,23 @@
       mouseY = e.clientY / window.innerHeight - 0.5;
     });
 
-    // Hacer que las estrellas se muevan de forma continua
+    // Función para aplicar parallax y mover las estrellas con profundidad
     function moveStars() {
       const directionX = mouseX;
       const directionY = mouseY;
 
       // Mover todas las estrellas en la dirección determinada por el ratón
       stars.forEach(star => {
-        let starX = parseFloat(star.style.left);
-        let starY = parseFloat(star.style.top);
+        const depth = parseFloat(star.dataset.depth); // Obtenemos la profundidad de la estrella
+        const starX = parseFloat(star.style.left);
+        const starY = parseFloat(star.style.top);
 
-        // Desplazar la estrella en la dirección de la posición del ratón
-        star.style.left = `${starX + directionX * 0.1}%`;
-        star.style.top = `${starY + directionY * 0.1}%`;
+        // Desplazar la estrella en función de su profundidad
+        const moveFactorX = directionX * (0.1 * depth);
+        const moveFactorY = directionY * (0.1 * depth);
+
+        star.style.left = `${starX + moveFactorX}%`;
+        star.style.top = `${starY + moveFactorY}%`;
 
         // Reposicionar las estrellas fuera del área visible, apareciendo desde el lado opuesto
         if (starX > 100) {
