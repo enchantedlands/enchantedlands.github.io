@@ -228,7 +228,9 @@
     // Crear estrellas
     const starContainer = document.getElementById('stars');
     const stars = [];
-    for (let i = 0; i < 120; i++) {
+
+    // Función para crear una nueva estrella
+    function createStar() {
       const star = document.createElement('div');
       star.classList.add('star');
       star.style.top = `${Math.random() * 100}%`;
@@ -236,6 +238,11 @@
       star.style.animationDuration = `${2 + Math.random() * 3}s`;
       starContainer.appendChild(star);
       stars.push(star);
+    }
+
+    // Crear estrellas iniciales
+    for (let i = 0; i < 30; i++) {
+      createStar();
     }
 
     // Movimiento con el mouse hacia las 8 direcciones (movimiento continuo)
@@ -263,8 +270,8 @@
 
         // Reposicionar las estrellas fuera del área visible
         if (starX > 100 || starX < 0 || starY > 100 || starY < 0) {
-          star.style.left = `${Math.random() * 100}%`;
-          star.style.top = `${Math.random() * 100}%`;
+          star.remove(); // Eliminar la estrella que se sale de la pantalla
+          createStar(); // Crear una nueva estrella
         }
       });
 
