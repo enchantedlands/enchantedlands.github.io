@@ -240,8 +240,8 @@
       stars.push(star);
     }
 
-    // Crear estrellas iniciales
-    for (let i = 0; i < 30; i++) {
+    // Crear muchas estrellas al principio
+    for (let i = 0; i < 150; i++) {  // Aumentamos el número de estrellas
       createStar();
     }
 
@@ -261,17 +261,24 @@
 
       // Mover todas las estrellas en la dirección determinada por el ratón
       stars.forEach(star => {
-        const starX = parseFloat(star.style.left);
-        const starY = parseFloat(star.style.top);
+        let starX = parseFloat(star.style.left);
+        let starY = parseFloat(star.style.top);
 
         // Desplazar la estrella en la dirección de la posición del ratón
         star.style.left = `${starX + directionX * 0.5}%`;
         star.style.top = `${starY + directionY * 0.5}%`;
 
-        // Reposicionar las estrellas fuera del área visible
-        if (starX > 100 || starX < 0 || starY > 100 || starY < 0) {
-          star.remove(); // Eliminar la estrella que se sale de la pantalla
-          createStar(); // Crear una nueva estrella
+        // Reposicionar las estrellas fuera del área visible, apareciendo desde el lado opuesto
+        if (starX > 100) {
+          star.style.left = "-2%";  // Aparece en el lado izquierdo
+        } else if (starX < -2) {
+          star.style.left = "102%";  // Aparece en el lado derecho
+        }
+
+        if (starY > 100) {
+          star.style.top = "-2%";  // Aparece en la parte superior
+        } else if (starY < -2) {
+          star.style.top = "102%";  // Aparece en la parte inferior
         }
       });
 
