@@ -18,7 +18,7 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Fondo de estrellas animadas con parpadeo */
+    /* Fondo de estrellas animadas */
     #stars {
       position: fixed;
       top: 0;
@@ -238,18 +238,24 @@
       stars.push(star);
     }
 
-    // Movimiento con el mouse y efecto infinito
+    // Movimiento con el mouse hacia las 8 direcciones
     document.addEventListener('mousemove', e => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-      starContainer.style.transform = `translate3d(${x * 40}px, ${y * 40}px, 0)`;
 
-      // Reposicionar las estrellas fuera del área visible
+      const directionX = x > 0 ? 1 : -1;
+      const directionY = y > 0 ? 1 : -1;
+
+      // Mover las estrellas en las 8 direcciones
+      starContainer.style.transform = `translate3d(${directionX * 20}px, ${directionY * 20}px, 0)`;
+
+      // Reposicionar las estrellas fuera del área visible en las direcciones adecuadas
       stars.forEach(star => {
         const starX = parseFloat(star.style.left);
         const starY = parseFloat(star.style.top);
 
         if (starX > 100 || starX < 0 || starY > 100 || starY < 0) {
+          // Reposicionar estrellas fuera del área visible
           star.style.left = `${Math.random() * 100}%`;
           star.style.top = `${Math.random() * 100}%`;
         }
