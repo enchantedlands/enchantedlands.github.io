@@ -13,7 +13,7 @@
     body {
       margin: 0;
       background-color: #121212;
-      overflow: auto; /* Cambié de hidden a auto para habilitar scrollbar */
+      overflow: auto;
       color: #fff;
       font-family: Arial, sans-serif;
     }
@@ -27,6 +27,8 @@
       height: 100%;
       z-index: 0;
       overflow: hidden;
+      pointer-events: none;
+      will-change: transform;
     }
 
     .star {
@@ -231,14 +233,24 @@
       star.style.top = `${Math.random() * 100}%`;
       star.style.left = `${Math.random() * 100}%`;
       star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      star.style.transform = `scale(${0.5 + Math.random() * 0.5})`; // Profundidad 3D (escala aleatoria)
       starContainer.appendChild(star);
     }
 
-    // Movimiento con el mouse
+    // Movimiento con el mouse para dar el efecto de 8 direcciones
     document.addEventListener('mousemove', e => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-      starContainer.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+
+      // Calcular las posiciones en 3D
+      const moveX = x * 40;
+      const moveY = y * 40;
+      const depth = Math.abs(x) + Math.abs(y);
+
+      // Aplicar transformaciones 3D con fade
+      starContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+      starContainer.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${moveY * 10}deg) rotateY(${moveX * 10}deg)`;
+      starContainer.style.opacity = 1 - depth * 0.5;
     });
   </script>
 </body>
